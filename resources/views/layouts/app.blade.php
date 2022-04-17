@@ -59,8 +59,16 @@
         rounded-xl text-gray-900 bg-white">
           <div class="add-idea-title text-center px-6 py-2 pt-6">
             <h3 class="font-semibold text-base">Add an idea</h3>
-            <p class="text-xs mt-4">Let us know what you would like and we'll take a look over!</p>
+            @auth
+            <p class="text-xs mt-4">
+              Let us know what you would like and we'll take a look over!</p>
+            @endauth
+            @guest
+            <p class="text-xs mt-4">
+              Please login to create idea.</p>
+            @endguest
           </div>
+          @auth
           <form action="#" method="post" class="space-y-4 px-4 py-6">
             <div>
               <input type="text" class="w-full text-sm border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2" placeholder="Your idea" />
@@ -91,6 +99,20 @@
               </button>
             </div>
           </form>
+          @endauth
+          @guest
+          <div class="text-center my-6 space-y-6 py-2 px-4">
+            <a href="{{ route('login') }}" class=" inline-block text-white justify-center bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-1/2 h-11 font-semibold
+              hover:bg-blue-700 transition duration-150 ease-in">
+              Login
+            </a>
+            <a href="{{ route('register') }}" class="inline-block text-white justify-center bg-gray-400 rounded-xl border border-gray-400 px-6 py-3 w-1/2 h-11 font-semibold
+              hover:bg-gray-700 transition duration-150 ease-in">
+              Register
+            </a>
+          </div>
+          @endguest
+
         </div>
       </div> <!-- end add-idea -->
       <div class="w-175">
