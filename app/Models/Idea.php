@@ -37,4 +37,26 @@ class Idea extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function GetStatusClasses()
+    {
+        $status = $this->status->name;
+
+        switch ($status) {
+            case 'Open':
+                return 'bg-yellow-200';
+            case 'In progress':
+                return 'bg-lime-200';
+            case 'Answered':
+                return 'bg-cyan-200';
+            case 'Closed':
+                return 'bg-gray-400';
+            case 'Void':
+                return 'bg-gray-200';
+
+            default:
+                # code...
+                break;
+        }
+    }
 }

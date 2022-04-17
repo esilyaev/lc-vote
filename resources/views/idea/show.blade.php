@@ -29,7 +29,7 @@
             <div class="text-gray-900">Comments 3</div>
           </div>
           <div class="flex items-center space-x-2">
-            <div class="bg-lime-200 text-xs font-bold uppercase rounded-full text-center w-28 h-8 py-2 px-4">In progress</div>
+            <div class="{{ $idea->GetStatusClasses() }} text-xs font-bold uppercase rounded-full text-center w-28 h-8 py-2 px-4">{{ $idea->status->name }}</div>
             <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-8 transition duration-150 ease-in py-2 px-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                 <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
@@ -45,7 +45,7 @@
     </div>
   </div> <!-- end idea-container -->
 
-  <div class=" controls flex items-center justify-between ml-6 mt-5">
+  <div class="controls flex items-center justify-between ml-6 mt-5">
     <div class="flex space-x-6 ">
       <div class="relative" x-data="{isOpen:false}">
         <button @click="isOpen=!isOpen" class="flex items-center justify-center text-white bg-blue-500 rounded-xl px-6 py-3 w-36 h-12 font-semibold
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div class="relative" x-data="{ isOpen:false }">
-        <button x-cloak @click.away="isOpen=false" @click="isOpen=!isOpen" class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-44 h-12 font-semibold
+        <button x-cloak @click="isOpen=!isOpen" class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-44 h-12 font-semibold
               hover:border-gray-400 transition duration-150 ease-in">
 
           <span class="mr-2">Set status</span>
@@ -83,7 +83,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div x-show="isOpen" class="absolute bg-white shadow-dialog rounded-xl py-3 px-4 w-76 text-left font-semibold top-0 mt-16 z-10">
+        <div x-show="isOpen" @click.away="isOpen=false" class="absolute bg-white shadow-dialog rounded-xl py-3 px-4 w-76 text-left font-semibold top-0 mt-16 z-10">
           <form action="#" method="post">
             <div class="space-y-2">
               <div class="">
