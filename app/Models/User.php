@@ -46,4 +46,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Idea::class);
     }
+
+    public function GetAvatar()
+    {
+        // $url = 'https://www.gravatar.com/avatar/b863575d7db69014b2ff29cf02555fa0%3Fs=100&d=https%253A%252F%252Fs3.amazonaws.com%252Flaracasts%252Fimages%252Fforum%252Favatars%252Fdefault-avatar-18.png';
+
+        $firstChar = $this->email[0];
+
+        if (is_numeric($firstChar)) {
+            $integerToUse = ord(strtolower($firstChar)) - 21;
+        } else {
+            $integerToUse = ord(strtolower($firstChar)) - 96;
+        }
+
+        $url = 'https://www.gravatar.com/avatar/'
+            . md5($this->email)
+            . '?s=200'
+            . '&d=http://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-'
+            . $integerToUse
+            . '.png';
+
+        // dd($url);
+
+        return $url;
+    }
 }

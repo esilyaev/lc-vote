@@ -21,5 +21,6 @@ Route::get('/', function () {
 Route::view('/idea', 'show');
 
 Route::get('/', [IdeaController::class, 'index'])->name('idea.index');
+Route::get('/idea/{idea:slug}', [IdeaController::class, 'show'])->name('idea.show');
 
 require __DIR__ . '/auth.php';
