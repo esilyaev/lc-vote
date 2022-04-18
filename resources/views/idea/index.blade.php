@@ -51,11 +51,11 @@
         </div>
       </div>
 
-      <div class="flex px-4 py-6">
+      <div class="flex px-4 py-6 w-full">
         <a href="#" class="flex-none">
           <img src="{{ $idea->user->GetAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
         </a>
-        <div class="mx-4 flex flex-col justify-between">
+        <div class="mx-4 flex flex-col justify-between w-full">
           <h4 class="text-xl font-semibold">
             <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
           </h4>

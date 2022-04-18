@@ -8,88 +8,89 @@ use App\Models\Idea;
 
 class IdeaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('idea.index', [
-            'ideas' => Idea::with([
-                'user:id,name,email',
-                'category:id,name',
-                'status:id,name'
-            ])
-                ->simplePaginate(Idea::IDEA_COUNT_PER_PAGE),
-        ]);
-    }
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+    return view('idea.index', [
+      'ideas' => Idea::with([
+        'user:id,name,email',
+        'category:id,name',
+        'status:id,name'
+      ])
+        ->orderBy('created_at', 'desc')
+        ->simplePaginate(Idea::IDEA_COUNT_PER_PAGE),
+    ]);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+    //
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreIdeaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreIdeaRequest $request)
-    {
-        //
-    }
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \App\Http\Requests\StoreIdeaRequest  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(StoreIdeaRequest $request)
+  {
+    //
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Idea $idea)
-    {
-        return view('idea.show', [
-            'idea' => $idea,
-        ]);
-    }
+  /**
+   * Display the specified resource.
+   *
+   * @param  \App\Models\Idea  $idea
+   * @return \Illuminate\Http\Response
+   */
+  public function show(Idea $idea)
+  {
+    return view('idea.show', [
+      'idea' => $idea,
+    ]);
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Idea $idea)
-    {
-        //
-    }
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  \App\Models\Idea  $idea
+   * @return \Illuminate\Http\Response
+   */
+  public function edit(Idea $idea)
+  {
+    //
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateIdeaRequest  $request
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateIdeaRequest $request, Idea $idea)
-    {
-        //
-    }
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \App\Http\Requests\UpdateIdeaRequest  $request
+   * @param  \App\Models\Idea  $idea
+   * @return \Illuminate\Http\Response
+   */
+  public function update(UpdateIdeaRequest $request, Idea $idea)
+  {
+    //
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Idea $idea)
-    {
-        //
-    }
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  \App\Models\Idea  $idea
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy(Idea $idea)
+  {
+    //
+  }
 }
