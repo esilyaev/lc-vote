@@ -38,6 +38,11 @@ class Idea extends Model
     return $this->belongsTo(Status::class);
   }
 
+  public function votes()
+  {
+    return $this->belongsToMany(User::class, 'votes');
+  }
+
   public function GetStatusClasses()
   {
     $status = $this->status->name;
@@ -58,12 +63,5 @@ class Idea extends Model
         # code...
         break;
     }
-  }
-
-  public function GetCountOfVotes(int $idea_id): int
-  {
-    return Vote::all()
-      ->where('idea_id', $idea_id)
-      ->count();
   }
 }
