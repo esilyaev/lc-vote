@@ -40,7 +40,7 @@
     " class="idea-container bg-white rounded-xl flex hover:shadow-card transition duration-150 ease-in cursor-pointer">
       <div class="border-r border-gray-100 px-5 py-8">
         <div class="text-center">
-          <div class="font-semibold text-2xl">12</div>
+          <div class="font-semibold text-2xl">{{ $idea->GetCountOfVotes($idea->id) }}</div>
           <div class="text-gray-500">Votes</div>
           <div class="mt-8">
             <button class="w-20 bg-gray-200 border border-gray-200 font-bold text-md uppercase 
