@@ -64,4 +64,20 @@ class Idea extends Model
         break;
     }
   }
+
+
+  /**
+   * @param User $user
+   * 
+   * @return bool
+   */
+  public function isVotedByUser(?User $user): bool
+  {
+    if (!$user) {
+      return false;
+    }
+    return Vote::where('user_id', $user->id)
+      ->where('idea_id', $this->id)
+      ->exists();
+  }
 }
