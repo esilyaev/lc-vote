@@ -155,14 +155,14 @@
         <div class="text-gray-400 text-xs leading-none">Votes</div>
       </div>
       @if ($hasVoted)
-      <button class="flex justify-center items-center text-white bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-36 h-12 font-semibold
+      <button wire:click.prevent="vote" class="flex justify-center items-center text-white bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-36 h-12 font-semibold
               hover:bg-blue-700 transition duration-150 ease-in" type="submit">
 
         <span class="uppercase font-bol">Voted</span>
       </button>
 
       @else
-      <button class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-36 h-12 font-semibold
+      <button wire:click.prevent="vote" class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-36 h-12 font-semibold
               hover:border-gray-400 transition duration-150 ease-in">
 
         <span class="uppercase font-bold">Vote</span>

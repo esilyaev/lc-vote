@@ -38,4 +38,43 @@ class IdeaTest extends TestCase
     $this->assertFalse($idea->isVotedByUser($userTwo));
     $this->assertFalse($idea->isVotedByUser(null));
   }
+
+  public function test_logged_user_can_vote_for_idea()
+  {
+    $user = User::factory()->create();
+    $category = Category::factory()->create();
+    $status = Status::factory()->create();
+
+    $idea = Idea::factory()->create([
+      'title' => 'My first idea',
+      'description' => 'Description of my first idea',
+      'user_id' => $user->id,
+      'category_id' => $category->id,
+      'status_id' => $status->id,
+    ]);
+
+    $this->assertFalse($idea->isVotedByUser($user));
+    $idea->vote($user);
+    $this->assertTrue($idea->isVotedByUser($user));
+  }
+
+  public function test_logged_user_can_unvote_for_idea()
+  {
+    $user = User::factory()->create();
+    $category = Category::factory()->create();
+    $status = Status::factory()->create();
+
+    $idea = Idea::factory()->create([
+      'title' => 'My first idea',
+      'description' => 'Description of my first idea',
+      'user_id' => $user->id,
+      'category_id' => $category->id,
+      'status_id' => $status->id,
+    ]);
+
+    $idea->vote($user);
+    $this->assertTrue($idea->isVotedByUser($user));
+    $idea->removeVote($user);
+    $this->assertFalse($idea->isVotedByUser($user));
+  }
 }

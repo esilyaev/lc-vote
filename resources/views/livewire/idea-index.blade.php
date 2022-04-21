@@ -3,15 +3,15 @@
     " class="idea-container bg-white rounded-xl flex hover:shadow-card transition duration-150 ease-in cursor-pointer">
   <div class="border-r border-gray-100 px-5 py-8">
     <div class="text-center">
-      <div class="font-semibold text-2xl @if($idea->voted_by_user) text-blue-500 @endif">{{ $idea->votes_count }}</div>
+      <div class="font-semibold text-2xl @if($hasVoted) text-blue-500 @endif">{{ $votesCount }}</div>
       <div class="text-gray-500">Votes</div>
       <div class="mt-8">
-        @if ($idea->voted_by_user)
-        <button class="w-20 text-white bg-blue-500 border border-blue-500 font-bold text-md uppercase 
+        @if ($hasVoted)
+        <button wire:click.prevent="vote" class="w-20 text-white bg-blue-500 border border-blue-500 font-bold text-md uppercase 
             rounded-xl px-4 py-3
             hover:border-blue-700 transition duration-150 ease-in">Voted</button>
         @else
-        <button class="w-20 bg-gray-200 border border-gray-200 font-bold text-md uppercase 
+        <button wire:click.prevent="vote" class="w-20 bg-gray-200 border border-gray-200 font-bold text-md uppercase 
             rounded-xl px-4 py-3
             hover:border-gray-400 transition duration-150 ease-in">Vote</button>
         @endif
