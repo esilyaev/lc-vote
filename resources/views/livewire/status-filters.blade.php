@@ -2,7 +2,7 @@
     <div>
         <ul class="flex uppercase font-semibold space-x-10">
             <li><a wire:click.prevent="SetStatus('all')" href="#" class=" transition duration-2 ease-in border-b-4 pb-3 hover:border-blue-500 hover:text-gray-900 @if($status === 'all') border-blue-500 text-gray-900 @endif">All Items ({{ $statusCount['all_statuses'] }})</a></li>
-            <li><a wire:click.prevent="SetStatus('Open')" href="#" class=" transition duration-2 ease-in border-b-4 pb-3 hover:border-yellow-500 hover:text-gray-900 @if($status === 'Open') border-yellow-500 text-gray-900 @endif">Opened (5)</a></li>
+            <li><a wire:click.prevent="SetStatus('Open')" href="#" class=" transition duration-2 ease-in border-b-4 pb-3 hover:border-yellow-500 hover:text-gray-900 @if($status === 'Open') border-yellow-500 text-gray-900 @endif">Opened ({{ $statusCount['open'] }})</a></li>
             <li><a wire:click.prevent="SetStatus('In progress')" href="#" class=" transition duration-2 ease-in border-b-4 pb-3 hover:border-lime-500 hover:text-gray-900 first-line:@if($status === 'In progress') border-lime-500 text-gray-900 @endif">In progress ({{ $statusCount['in_progress'] }})</a></li>
         </ul>
     </div>
