@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Idea;
+use App\Models\Status;
 use Livewire\Component;
 use Illuminate\Support\Facades\Route;
 
 
 class StatusFilters extends Component
 {
+    public $statusCount;
     public $status = 'all';
     protected $queryString = [
         'status'
@@ -18,6 +21,10 @@ class StatusFilters extends Component
         if (Route::currentRouteName() === 'idea.show') {
             $this->status = null;
         }
+
+        $this->statusCount = Status::GetCount();
+
+        // dd($statusCount);
     }
 
     public function render()

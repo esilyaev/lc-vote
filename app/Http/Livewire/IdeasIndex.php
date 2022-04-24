@@ -16,6 +16,8 @@ class IdeasIndex extends Component
     {
         $statuses = Status::all()->pluck('id', 'name');
 
+        // dd(request());
+
         return view('livewire.ideas-index', [
             'ideas' => Idea::with([
                 'user:id,name,email',
@@ -23,7 +25,7 @@ class IdeasIndex extends Component
                 'status:id,name',
             ])
                 ->when(request()->status && request()->status !== 'all', function ($query) use ($statuses) {
-                    return $query->where('status_id', $statuses[request()->status]);
+                    return $query->where('status_id', $statuses->get(request()->status));
                 })
                 ->addSelect([
                     'voted_by_user' => Vote::select('id')

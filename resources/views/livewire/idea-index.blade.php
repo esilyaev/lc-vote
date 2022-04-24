@@ -30,7 +30,7 @@
                 <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
             </h4>
             <div class="text-gray-600 mt-3">
-                <p class="line-clamp-3">{{ $idea-> description }}</p>
+                <p class="line-clamp-3">{{ $idea->description }}</p>
             </div>
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
