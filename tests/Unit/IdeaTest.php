@@ -60,11 +60,12 @@ class IdeaTest extends TestCase
         $this->assertTrue($idea->isVotedByUser($user));
     }
 
-    public function test_logged_user_can_unvote_for_idea()
+    public function test_logged_user_can_remove_vote_for_idea()
     {
         $user = User::factory()->create();
         $category = Category::factory()->create();
         $status = Status::factory()->create();
+
 
         $idea = Idea::factory()->create([
             'title' => 'My first idea',
