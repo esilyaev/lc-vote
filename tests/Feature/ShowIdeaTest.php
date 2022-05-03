@@ -12,35 +12,35 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ShowIdeaTest extends TestCase
 {
-  use RefreshDatabase;
+    use RefreshDatabase;
 
-  /** @test */
-  public function list_of_ideas_show_on_main_page()
-  {
-    User::factory(2)->create();
-    Category::factory(2)->create();
-    Status::factory(2)->create();
+    /** @test */
+    public function list_of_ideas_show_on_main_page()
+    {
+        User::factory(2)->create();
+        Category::factory(2)->create();
+        Status::factory(2)->create();
 
-    $ideaOne = Idea::factory()->create([
-      'title' => 'My first idea',
-      'description' => 'Description of my first idea',
-      'user_id' => 1,
-      'category_id' => 1,
-      'status_id' => 1,
-    ]);
-    $ideaTwo = Idea::factory()->create([
-      'title' => 'My second idea',
-      'description' => 'Description of my second idea',
-      'user_id' => 1,
-      'category_id' => 1,
-      'status_id' => 1,
-    ]);
+        $ideaOne = Idea::factory()->create([
+            'title' => 'My first idea',
+            'description' => 'Description of my first idea',
+            'user_id' => 1,
+            'category_id' => 1,
+            'status_id' => 1,
+        ]);
+        $ideaTwo = Idea::factory()->create([
+            'title' => 'My second idea',
+            'description' => 'Description of my second idea',
+            'user_id' => 1,
+            'category_id' => 1,
+            'status_id' => 1,
+        ]);
 
 
 
-    $response = $this->get(route('idea.index'));
-    $response->assertSuccessful();
-    $response->assertSee($ideaOne->title);
-    $response->assertSee($ideaTwo->title);
-  }
+        $response = $this->get(route('idea.index'));
+        $response->assertSuccessful();
+        $response->assertSee($ideaOne->title);
+        $response->assertSee($ideaTwo->title);
+    }
 }

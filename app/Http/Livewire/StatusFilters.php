@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Route;
 class StatusFilters extends Component
 {
     public $statusCount;
-    public $status = 'all';
-    protected $queryString = [
-        'status'
-    ];
+    public $status;
+    public $category;
+
 
     public function mount()
     {
@@ -35,11 +34,12 @@ class StatusFilters extends Component
     public function SetStatus(string $status)
     {
         $this->status = $status;
-        // if ($this->getPreviousRouteName() === 'idea.show') {
-        return redirect()->route('idea.index', [
-            'status' => $this->status,
-        ]);
-        // }
+        $this->emit('query-string-updated-status', $this->status);
+        if ($this->getPreviousRouteName() === 'idea.show') {
+            return redirect()->route('idea.index', [
+                'status' => $this->status,
+            ]);
+        }
     }
 
     private function getPreviousRouteName()
