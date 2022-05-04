@@ -6,7 +6,7 @@ use App\Models\Idea;
 
 use App\Models\User;
 
-use Tests\TestCase;;
+use Tests\TestCase;
 
 use App\Models\Status;
 use App\Models\Category;
