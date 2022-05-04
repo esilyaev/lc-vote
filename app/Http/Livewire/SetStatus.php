@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Idea;
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Response;
 
@@ -19,7 +20,9 @@ class SetStatus extends Component
 
     public function setStatus()
     {
-        if (!auth()->user()->isAdmin()) {
+        /** @var User $user */
+        $user = auth()->user();
+        if (!$user->isAdmin()) {
             abort(Response::HTTP_FORBIDDEN);
         }
 

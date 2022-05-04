@@ -42,7 +42,7 @@
                 <button @click="isOpen=false" class="flex items-center text-white bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-1/2 h-11 font-semibold
               hover:bg-blue-700 transition duration-150 ease-in">
 
-                    <span class="ml-2">Submit</span>
+                    <span class="ml-2">Update</span>
                 </button>
                 <button class="flex items-center bg-gray-100 rounded-xl border border-gray-100 px-6 py-3 w-1/2 h-11 font-semibold
               hover:border-gray-400 transition duration-150 ease-in">
