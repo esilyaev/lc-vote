@@ -17,9 +17,11 @@ class StatusFilters extends Component
 
     public function mount()
     {
+
         if (Route::currentRouteName() === 'idea.show') {
             $this->status = null;
         }
+        $this->status = request()->status ?? 'all';
 
         $this->statusCount = Status::GetCount();
 

@@ -13,6 +13,15 @@ class IdeaShow extends Component
     public $votesCount;
     public $hasVoted;
 
+    protected $listeners = [
+        'statusWasUpdated',
+    ];
+
+    public function statusWasUpdated()
+    {
+        $this->idea->refresh();
+    }
+
     public function mount(Idea $idea, int $votesCount)
     {
         $this->idea = $idea;
