@@ -1,4 +1,4 @@
-<div class="relative" x-data="{ isOpen:false }">
+<div class="relative" x-data="{ isOpen:false }" x-init="$wire.on('statusWasUpdated',() => isOpen = false)">
     <button x-cloak @click="isOpen=!isOpen" class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-44 h-12 font-semibold
               hover:border-gray-400 transition duration-150 ease-in">
 
@@ -39,8 +39,8 @@
             <textarea name="" id="" cols="30" rows="3" class="w-full mt-2 bg-gray-100 rounded-xl border-none placeholder-gray-700 text-sm" placeholder="Go ahead, don't be shy. Share your thoughts..."></textarea>
             <div class="flex items-center justify-between space-x-3 mt-2">
 
-                <button @click="isOpen=false" class="flex items-center text-white bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-1/2 h-11 font-semibold
-              hover:bg-blue-700 transition duration-150 ease-in">
+                <button class="flex items-center text-white bg-blue-500 rounded-xl border border-blue-500 px-6 py-3 w-1/2 h-11 font-semibold
+              hover:bg-blue-700 transition duration-150 ease-in disabled:opacity-50">
 
                     <span class="ml-2">Update</span>
                 </button>
@@ -55,7 +55,7 @@
 
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="checkbox" class="
+                    <input wire:model="notifyAllVoters" type="checkbox" class="
                           rounded
                           border-gray-300
                           text-blue-500
@@ -65,7 +65,7 @@
                           focus:ring-offset-0
                           focus:ring-indigo-200
                           focus:ring-opacity-50
-                        " checked="">
+                        ">
                     <span class="ml-2">Notify all voted</span>
                 </label>
             </div>
