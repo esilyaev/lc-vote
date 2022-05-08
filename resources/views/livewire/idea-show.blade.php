@@ -25,16 +25,18 @@
                     </div>
                     <div class="flex items-center space-x-2">
                         <div class="{{ $idea->GetStatusClasses() }} text-xs font-bold uppercase rounded-full text-center w-28 h-8 py-2 px-4">{{ $idea->status->name }}</div>
-                        <div x-data="{isOpen:false}">
+                        <div x-data="{isOpen:false}" class="relative">
                             <button @click=" isOpen=!isOpen" class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-8 transition duration-150 ease-in py-2 px-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
-                                <ul x-show="isOpen" @click.away="isOpen=false" class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-2">
-                                    <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
-                                    <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
-                                </ul>
                             </button>
+                            <ul x-show="isOpen" @click.away="isOpen=false" class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-4 z-10">
+                                <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Edit idea</a></li>
+                                <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
+                                <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
+                            </ul>
+
                         </div>
 
                     </div>
