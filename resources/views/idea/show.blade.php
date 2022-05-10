@@ -7,7 +7,7 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votes" />
 
-    <livewire:edit-idea />
+    <livewire:edit-idea :idea="$idea" />
 
     <div class="comments-container relative space-y-6 ml-24 my-8">
         <div class="comment relative bg-white rounded-xl flex mt-4">

@@ -31,8 +31,8 @@
                                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
                             </button>
-                            <ul x-show="isOpen" @click.away="isOpen=false" class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-4 z-10">
-                                <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Edit idea</a></li>
+                            <ul x-cloak x-show="isOpen" @click.away="isOpen=false" class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-4 z-10">
+                                <li><a @click="isOpen = false; $dispatch('custom-show-edit-modal')" href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Edit idea</a></li>
                                 <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
                                 <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
                             </ul>
