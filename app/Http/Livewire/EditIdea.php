@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Idea;
 use Livewire\Component;
 use App\Models\Category;
+use Illuminate\Http\Response;
+
 
 class EditIdea extends Component
 {
@@ -15,7 +17,7 @@ class EditIdea extends Component
 
     protected $rules = [
         'title' => 'required|min:4',
-        'category' => 'required|integer',
+        'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
@@ -29,12 +31,14 @@ class EditIdea extends Component
 
     public function editIdea()
     {
-
-        if (!auth()->check()) {
+        if (auth()->guest()) {
             return redirect()->route('login');
         }
-        // dd(__METHOD__);
-        $this->validate();
+
+
+        if (auth()->user()->cannot('update', $this->idea)) {
+            abort(Response::HTTP_FORBIDDEN);
+        }
 
         $this->idea->update([
             'title' => $this->title,
@@ -46,7 +50,7 @@ class EditIdea extends Component
 
         $this->emit('ideaWasUpdated');
 
-        session()->flash('success_message', 'Idea was added successfully.');
+        // session()->flash('success_message', 'Idea was added successfully.');
 
 
         // return redirect()->route('idea.show', $this->idea);

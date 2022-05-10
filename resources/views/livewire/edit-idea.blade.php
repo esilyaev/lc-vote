@@ -28,7 +28,7 @@
                     <div class="sm:flex sm:items-start">
                         <form wire:submit.prevent="editIdea" action="#" method="post" class="space-y-4 px-4 pt-6 w-full">
                             <div>
-                                <input wire:model.defer="title" type="text" class="w-full text-sm border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2" placeholder="Your idea">
+                                <input wire:model.defer="title" type="text" class="w-full text-sm border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2" placeholder="Your idea" required>
                                 @error('title')
                                 <p class="text-red-500 text-xs">Title must be more than 4 characters</p>
                                 @enderror

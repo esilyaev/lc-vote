@@ -1,4 +1,4 @@
-<div class="relative" x-data="{ isOpen:false }" x-init="$wire.on('statusWasUpdated',() => isOpen = false)">
+<div x-cloak class="relative" x-data="{ isOpen:false }" x-init="$wire.on('statusWasUpdated',() => isOpen = false)">
     <button x-cloak @click="isOpen=!isOpen" class="flex justify-center items-center bg-gray-200 rounded-xl border border-gray-200 px-6 py-3 w-44 h-12 font-semibold
               hover:border-gray-400 transition duration-150 ease-in">
 
