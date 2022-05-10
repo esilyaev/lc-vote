@@ -5,6 +5,20 @@
         </svg>
         <span class="ml-2">All ideas (or back to chosen category with filters)</span></a>
 
+    <div class="flex max-w-sm w-full justify-between fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-6 py-6 mx-6 my-8 z-10">
+        <div class="flex items-center text-gray-500 text-base">
+            <svg class="h-6 w-6 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Idea was updated successfully
+        </div>
+        <button class="text-gray-500">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
     <livewire:idea-show :idea="$idea" :votesCount="$votes" />
     @can('update', $idea)
     <livewire:edit-idea :idea="$idea" />
