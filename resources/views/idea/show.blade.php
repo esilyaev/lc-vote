@@ -1,23 +1,11 @@
 <x-app-layout>
     <a href="{{ $backUrl }}" class="flex items-center font-semibold hover:underline">
-        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
         <span class="ml-2">All ideas (or back to chosen category with filters)</span></a>
 
-    <div class="flex max-w-sm w-full justify-between fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-6 py-6 mx-6 my-8 z-10">
-        <div class="flex items-center text-gray-500 text-base">
-            <svg class="h-6 w-6 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Idea was updated successfully
-        </div>
-        <button class="text-gray-500">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
+    <x-modal-confirm />
 
     <livewire:idea-show :idea="$idea" :votesCount="$votes" />
     @can('update', $idea)
@@ -26,23 +14,23 @@
     @can('delete', $idea)
     <livewire:delete-idea :idea="$idea" />
     @endcan
-    <div class="comments-container relative space-y-6 ml-24 my-8">
-        <div class="comment relative bg-white rounded-xl flex mt-4">
+    <div class="relative my-8 ml-24 space-y-6 comments-container">
+        <div class="relative flex mt-4 bg-white comment rounded-xl">
             <div class="flex flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="w-full mx-4">
                     <!-- <h4 class="text-xl font-semibold">
             <a href="#" class="hover:underline">A random title can go here...</a>
           </h4> -->
-                    <div class="text-gray-600 mt-3">
+                    <div class="mt-3 text-gray-600">
                         <p class="line-clamp-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, unde?</p>
                     </div>
                     <div class="flex items-center justify-between mt-6">
-                        <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
                             <div class="font-bold text-gray-700">User name</div>
                             <div>&bullet;</div>
                             <div>10 hours ago</div>
@@ -50,13 +38,13 @@
                         </div>
                         <div class="flex items-center space-x-2">
 
-                            <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-8 transition duration-150 ease-in py-2 px-3">
+                            <button class="relative h-8 px-3 py-2 transition duration-150 ease-in bg-gray-100 rounded-full hover:bg-gray-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
-                                <ul class="hidden absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-2">
-                                    <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
-                                    <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
+                                <ul class="absolute hidden py-3 ml-2 font-semibold bg-white w-44 shadow-dialog rounded-xl">
+                                    <li><a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a></li>
+                                    <li><a href="#" class="block px-5 py-3 text-red-700 transition duration-150 ease-in hover:bg-gray-100">Delete post</a></li>
                                 </ul>
                             </button>
                         </div>
@@ -64,23 +52,23 @@
                 </div>
             </div>
         </div> <!-- end comment -->
-        <div class="comment comment-admin relative bg-white rounded-xl flex mt-4 border-2 border-blue-500">
+        <div class="relative flex mt-4 bg-white border-2 border-blue-500 comment comment-admin rounded-xl">
             <div class="flex flex-1 px-4 py-6">
                 <div class="flex-none text-center text-blue-500">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl mb-2 ">
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="mb-2 w-14 h-14 rounded-xl ">
                     </a>
-                    <span class="uppercase text-xs">Admin</span>
+                    <span class="text-xs uppercase">Admin</span>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="w-full mx-4">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">Status changed to "In Progress"</a>
                     </h4>
-                    <div class="text-gray-600 mt-3">
+                    <div class="mt-3 text-gray-600">
                         <p class="line-clamp-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, unde?</p>
                     </div>
                     <div class="flex items-center justify-between mt-6">
-                        <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
                             <div class="font-bold text-blue-500">Admin name</div>
                             <div>&bullet;</div>
                             <div>10 hours ago</div>
@@ -88,13 +76,13 @@
                         </div>
                         <div class="flex items-center space-x-2">
 
-                            <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-8 transition duration-150 ease-in py-2 px-3">
+                            <button class="relative h-8 px-3 py-2 transition duration-150 ease-in bg-gray-100 rounded-full hover:bg-gray-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
-                                <ul class="hidden absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-2">
-                                    <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
-                                    <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
+                                <ul class="absolute hidden py-3 ml-2 font-semibold bg-white w-44 shadow-dialog rounded-xl">
+                                    <li><a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a></li>
+                                    <li><a href="#" class="block px-5 py-3 text-red-700 transition duration-150 ease-in hover:bg-gray-100">Delete post</a></li>
                                 </ul>
                             </button>
                         </div>
@@ -102,22 +90,22 @@
                 </div>
             </div>
         </div> <!-- end comment -->
-        <div class="comment relative bg-white rounded-xl flex mt-4">
+        <div class="relative flex mt-4 bg-white comment rounded-xl">
             <div class="flex flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="w-full mx-4">
                     <!-- <h4 class="text-xl font-semibold">
             <a href="#" class="hover:underline">A random title can go here...</a>
           </h4> -->
-                    <div class="text-gray-600 mt-3">
+                    <div class="mt-3 text-gray-600">
                         <p class="line-clamp-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, unde?</p>
                     </div>
                     <div class="flex items-center justify-between mt-6">
-                        <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
                             <div class="font-bold text-gray-700">User name</div>
                             <div>&bullet;</div>
                             <div>10 hours ago</div>
@@ -125,13 +113,13 @@
                         </div>
                         <div class="flex items-center space-x-2">
 
-                            <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-8 transition duration-150 ease-in py-2 px-3">
+                            <button class="relative h-8 px-3 py-2 transition duration-150 ease-in bg-gray-100 rounded-full hover:bg-gray-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
-                                <ul class="hidden absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 ml-2">
-                                    <li><a href="#" class="block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Mark as Spam</a></li>
-                                    <li><a href="#" class="text-red-700 block hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in">Delete post</a></li>
+                                <ul class="absolute hidden py-3 ml-2 font-semibold bg-white w-44 shadow-dialog rounded-xl">
+                                    <li><a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a></li>
+                                    <li><a href="#" class="block px-5 py-3 text-red-700 transition duration-150 ease-in hover:bg-gray-100">Delete post</a></li>
                                 </ul>
                             </button>
                         </div>
