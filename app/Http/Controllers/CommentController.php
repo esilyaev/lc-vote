@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Idea;
-use App\Models\Vote;
-use App\Http\Requests\StoreIdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
+use App\Models\Comment;
+use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\UpdateCommentRequest;
 
-class IdeaController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        return view('idea.index');
+        //
     }
 
     /**
@@ -32,10 +31,10 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreIdeaRequest  $request
+     * @param  \App\Http\Requests\StoreCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreIdeaRequest $request)
+    public function store(StoreCommentRequest $request)
     {
         //
     }
@@ -43,26 +42,21 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Idea $idea)
+    public function show(Comment $comment)
     {
-        return view('idea.show', [
-            'idea' => $idea,
-            'votes' => $idea->votes()->count(),
-            'comments' => $idea->comments()->count(),
-            'backUrl' => url()->previous() !== url()->full() ? url()->previous() : route('idea.index')
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Idea $idea)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -70,11 +64,11 @@ class IdeaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateIdeaRequest  $request
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Http\Requests\UpdateCommentRequest  $request
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateIdeaRequest $request, Idea $idea)
+    public function update(UpdateCommentRequest $request, Comment $comment)
     {
         //
     }
@@ -82,10 +76,10 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Idea $idea)
+    public function destroy(Comment $comment)
     {
         //
     }

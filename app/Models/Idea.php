@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use App\Exceptions\VoteNotFoundException;
 use App\Exceptions\DuplicateVoteException;
@@ -28,6 +29,11 @@ class Idea extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function category()

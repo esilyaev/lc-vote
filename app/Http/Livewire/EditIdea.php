@@ -48,7 +48,7 @@ class EditIdea extends Component
 
         $this->idea->save();
 
-        $this->emit('ideaWasUpdated');
+        $this->emit('ideaWasUpdated', 'Idea was updated successfully');
 
         // session()->flash('success_message', 'Idea was added successfully.');
 

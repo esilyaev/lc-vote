@@ -63,35 +63,40 @@ class IdeasIndex extends Component
 
         // dd(request());
 
-        return view('livewire.ideas-index', [
-            'ideas' => Idea::with([
-                'user:id,name,email',
-                'category:id,name',
-                'status:id,name',
+        $ideas = Idea::with([
+            'user:id,name,email',
+            'category:id,name',
+            'status:id,name',
+        ])
+            ->when($this->status && $this->status !== 'all', function ($query) use ($statuses) {
+                return $query->where('status_id', $statuses->get($this->status));
+            })
+            ->when($this->category && $this->category !== 'all', function ($query) use ($categories) {
+                return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
+            })
+            ->when($this->filter && $this->filter === 'top', function ($query) {
+                return $query->orderByDesc('votes_count');
+            })
+            ->when($this->filter && $this->filter === 'my', function ($query) {
+                return $query->where('user_id', auth()->user()->id);
+            })
+            ->when($this->searchFilter && strlen($this->searchFilter) >= 3, function ($query) {
+                return $query->where('title', 'like', '%' . $this->searchFilter . '%');
+            })
+            ->addSelect([
+                'voted_by_user' => Vote::select('id')
+                    ->where('user_id', auth()->id())
+                    ->whereColumn('idea_id', 'ideas.id')
             ])
-                ->when($this->status && $this->status !== 'all', function ($query) use ($statuses) {
-                    return $query->where('status_id', $statuses->get($this->status));
-                })
-                ->when($this->category && $this->category !== 'all', function ($query) use ($categories) {
-                    return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
-                })
-                ->when($this->filter && $this->filter === 'top', function ($query) {
-                    return $query->orderByDesc('votes_count');
-                })
-                ->when($this->filter && $this->filter === 'my', function ($query) {
-                    return $query->where('user_id', auth()->user()->id);
-                })
-                ->when($this->searchFilter && strlen($this->searchFilter) >= 3, function ($query) {
-                    return $query->where('title', 'like', '%' . $this->searchFilter . '%');
-                })
-                ->addSelect([
-                    'voted_by_user' => Vote::select('id')
-                        ->where('user_id', auth()->id())
-                        ->whereColumn('idea_id', 'ideas.id')
-                ])
-                ->withCount('votes')
-                ->orderBy('created_at', 'desc')
-                ->simplePaginate(Idea::IDEA_COUNT_PER_PAGE),
+            ->withCount('votes')
+            ->withCount('comments')
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate(Idea::IDEA_COUNT_PER_PAGE);
+
+        // dd($ideas);
+
+        return view('livewire.ideas-index', [
+            'ideas' => $ideas,
             'categories' => $categories,
         ]);
     }

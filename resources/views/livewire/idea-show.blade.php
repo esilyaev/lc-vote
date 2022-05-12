@@ -21,7 +21,7 @@
                         <div>&bullet;</div>
                         <div>{{ $idea->category->name }}</div>
                         <div>&bullet;</div>
-                        <div class="text-gray-900">Comments 3</div>
+                        <div class="text-gray-900">Comments {{ $commentsCount }}</div>
                     </div>
                     <div class="flex items-center space-x-2">
                         <div class="{{ $idea->GetStatusClasses() }} text-xs font-bold uppercase rounded-full text-center w-28 h-8 py-2 px-4">{{ $idea->status->name }}</div>
@@ -34,7 +34,7 @@
                             </button>
                             <ul x-cloak x-show="isOpen" @click.away="isOpen=false" class="absolute z-10 py-3 ml-4 font-semibold bg-white w-44 shadow-dialog rounded-xl">
                                 <li><a @click="isOpen = false; $dispatch('custom-show-edit-modal')" href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Edit idea</a></li>
-                                <li><a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a></li>
+                                <li><a href="#" class="block px-5 py-3 tra e-in hover:bg-gray-100">Mark as Spam</a></li>
                                 <li><a @click="isOpen = false; $dispatch('custom-show-delete-modal')" href="#" class="block px-5 py-3 text-red-700 transition duration-150 ease-in hover:bg-gray-100">Delete idea</a></li>
                             </ul>
 
