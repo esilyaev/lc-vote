@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach (Idea::all() as $idea) {
-            $comments_count = $generator->numberBetween(1, 5);
+            $comments_count = $generator->numberBetween(1, 25);
 
             for ($i = 0; $i < $comments_count; $i++) {
                 Comment::factory()->create([

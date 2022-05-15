@@ -16,7 +16,8 @@ class IdeaShow extends Component
 
     protected $listeners = [
         'statusWasUpdated',
-        'ideaWasUpdated'
+        'ideaWasUpdated',
+        'comment-added' => 'commentWasAdded',
     ];
 
     public function statusWasUpdated()
@@ -25,6 +26,11 @@ class IdeaShow extends Component
     }
 
     public function ideaWasUpdated()
+    {
+        $this->idea->refresh();
+    }
+
+    public function commentWasAdded()
     {
         $this->idea->refresh();
     }

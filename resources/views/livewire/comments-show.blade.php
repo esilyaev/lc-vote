@@ -13,7 +13,7 @@
             <a href="#" class="hover:underline">A random title can go here...</a>
           </h4> -->
                 <div class="mt-3 text-gray-600">
-                    <p class="line-clamp-3">{{ $comment->body }}</p>
+                    <p class="">{{ $comment->body }}</p>
                 </div>
                 <div class="flex items-center justify-between mt-6">
                     <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
@@ -44,6 +44,11 @@
     <div>No comments were found ...</div>
 
     @endforelse
+
+    <div class="my-8">
+        {{ $comments->links() }}
+
+    </div>
 
 
 </div> <!-- end comments-container -->
